@@ -61,8 +61,7 @@
 
 .galleryListView__name {
     font-size: 12px;
-    max-width: 400px;
-    margin: 2px;
+    max-width: 400px;  
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
