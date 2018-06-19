@@ -1,0 +1,23 @@
+﻿<div ng-controller="Jaywing.GalleryListView.GalleryListViewController as vm" ng-if="items" class="galleryListView__cards">
+
+    <div class="galleryListView__card" ng-repeat="item in items" ng-class="{
+         '-selected':item.selected,
+         '-published':item.published,
+         '-unpublished':!item.published}
+         " ng-click="vm.selectItem(item, $event, $index)">
+
+        <div>
+            <i ng-show="item.selected" class="icon-check umb-media-grid__checkmark" style=""></i>
+
+            <div class="galleryListView__overlay" ng-click="vm.clickItem(item)">
+                <i class="icon-info galleryListView__info"></i>
+                <div class="galleryListView__name ">{{ item.name }}</div>
+            </div>
+
+            <div class="galleryListView__image-background" ng-if="item.thumbnail"></div>
+
+            <img class="galleryListView__item-image" width="200" height="200"
+                 ng-if="item.thumbnail" ng-src="{{item.thumbnail}}" alt="{{item.name}}" draggable="false" />
+        </div>
+    </div>
+</div>
