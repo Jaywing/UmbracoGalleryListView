@@ -10,15 +10,22 @@
 
         function activate() {
             angular.forEach($scope.items, function (item) {
-                getBackgroundImage(item);
+                getImage(item);
             });            
         }
 
-        function getBackgroundImage(item) {   
-            mediaResource.getById(item.image)
-                .then(function (media) {
-                    item.thumbnail = mediaHelper.resolveFile(media, true);
-                });
+        function getImage(item) {   
+            if (item.thumbnail) {
+                mediaResource.getById(item.thumbnail)
+                    .then(function (media) {
+                        item.thumbnailImage = mediaHelper.resolveFile(media, true);
+                    });
+            } else if (item.image) {
+                mediaResource.getById(item.image)
+                    .then(function (media) {
+                        item.thumbnailImage = mediaHelper.resolveFile(media, true);
+                    });
+            }
         }
 
         function selectItem(selectedItem, $event, index) {
